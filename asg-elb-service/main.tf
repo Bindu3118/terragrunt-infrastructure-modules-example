@@ -117,7 +117,7 @@ resource "aws_security_group_rule" "asg_allow_http_inbound" {
 
 resource "aws_elb" "webserver_example" {
   name            = var.name
-  subnets         = data.aws_subnet.default.ids
+  subnet          = data.aws_subnet.default.id
   security_groups = [aws_security_group.elb.id]
 
   listener {

@@ -8,5 +8,9 @@ data "aws_vpc" "default" {
   default = true
 }
 
-data "aws_subnet" "default" {
+data "aws_subnets" "default" {
+  filter {
+    name = "tag:Name"
+    values = ["subnet-1"]
+  }
 }

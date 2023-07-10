@@ -28,7 +28,7 @@ terraform {
 
 resource "aws_autoscaling_group" "webserver_example" {
   launch_configuration = aws_launch_configuration.webserver_example.id
-  vpc_zone_identifier  = [data.aws_subnet.default.id]
+  vpc_zone_identifier  = [data.aws_subnets.default.id]
 
   load_balancers    = [aws_elb.webserver_example.name]
   health_check_type = "ELB"
@@ -117,7 +117,7 @@ resource "aws_security_group_rule" "asg_allow_http_inbound" {
 
 resource "aws_elb" "webserver_example" {
   name            = var.name
-  subnets         = [data.aws_subnet.default.id]
+  subnets         = [data.aws_subnets.default.id]
   security_groups = [aws_security_group.elb.id]
 
   listener {

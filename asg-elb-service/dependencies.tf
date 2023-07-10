@@ -11,6 +11,10 @@ data "aws_vpc" "default" {
 data "aws_subnet" "default" {
   filter {
     name = "tag:Name"
-    values = ["subnet-1", "subnet-2"]
+    values = ["subnet-1"]
+  }
+  filter {
+    name = "state"
+    values = ["available"]
   }
 }
